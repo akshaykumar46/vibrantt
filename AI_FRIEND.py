@@ -9,6 +9,11 @@ import webbrowser
 import random
 from googlesearch import *
 import pyautogui
+import tkinter
+from tkinter.filedialog import askopenfile 
+root = tkinter.Tk()
+root.withdraw()
+
 #import Command_database
 #import table
 engine=pyttsx3.init()
@@ -76,6 +81,13 @@ def welcome_greet():
        # call(["amixer","-D","pulse","sset","master",str(set_value)+"10%"])
         #return None
 
+def file_reader():
+    speak("Sir, please select a file to read.")
+    file_to_read=askopenfile(mode='r')
+    speak(file_to_read.read())
+    file_to_read.close()
+
+
 def take_command():
     recognizer_var=speech_recognition.Recognizer()
     with speech_recognition.Microphone() as source:
@@ -109,7 +121,7 @@ if __name__ == "__main__":
 
     while True:
         while True:
-            print("How you wanna continue-\n1. enter 1 for text based input.\n 2. enter 2 for voice based inputs ")
+            print("How you wanna continue-\n1. enter 1 for text based input.\n2. enter 2 for voice based inputs ")
             finalinput=int(input())
             if(finalinput==1):
                 query=text_inp().lower()
@@ -140,6 +152,8 @@ if __name__ == "__main__":
                     amt=take_command().replace(" ","")
             amt=int(amt)
             volume_increase(amt)
+        elif 'read file' in query:
+            file_reader()
 
         elif "decrease volume" in query:
             speak("How much I should decrease sir?")
@@ -166,12 +180,16 @@ if __name__ == "__main__":
            # songs=os.listdir(songs_dir)
             #os.startfile(os.path.join(songs_dir,songs[song_index]))
 
-        elif "play song" in query:
+        elif "play songs" in query:
             speak("name the song which you wanna listen")
             song_name=take_command()
             speak("searching {var} on gaana.com...".format(var=song_name))
             song_name=song_name.replace(" ","%20")
-            webbrowser.get(chrome_path).open_new_tab("https://gaana.com/song/%s" % song_name)
+            #!for windows
+            # chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for linux
+            chrome_path="google-chrome"
+            webbrowser.get(chrome_path).open_new_tab("https://gaana.com/search/%s" % song_name)
 
 
         elif "joke" in query:
@@ -183,7 +201,10 @@ if __name__ == "__main__":
             input_for_search=input_for_search.replace(" ","+")
             print(input_for_search)
             speak("searching for {var} in youtube".format(var=input_for_search))
-            chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for windows
+            # chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for linux
+            chrome_path="google-chrome"
             webbrowser.get(chrome_path).open_new_tab("https://www.youtube.com/results?search_query=%s" % input_for_search)
 
         elif "today's date" in query:
@@ -203,7 +224,10 @@ if __name__ == "__main__":
             command=take_command().lower()
             print(command)
             speak("searching {var}...".format(var=command))
-            chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for windows
+            # chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for linux
+            chrome_path="google-chrome"
             webbrowser.get(chrome_path).open_new_tab("https://google.com/search?q=%s" % command)
 
         elif "website" in query:
@@ -212,7 +236,10 @@ if __name__ == "__main__":
                 query=query.replace("open","")
             query=query.strip()
             speak("opening "+query+".com")
-            chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for windows
+            # chrome_path="C:/Program Files (x86)/Google/Chrome/Application/chrome.exe %s"
+            #!for linux
+            chrome_path="google-chrome"
             webbrowser.get(chrome_path).open_new_tab(query+".com")
 
 
