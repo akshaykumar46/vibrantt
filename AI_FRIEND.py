@@ -1,3 +1,4 @@
+
 import pyttsx3
 import datetime
 import speech_recognition
@@ -100,17 +101,20 @@ def text_inp():
 
 
 if __name__ == "__main__":
+
+
     # welcome_greet()
   #  table_num=table.create_table()
 
 
     while True:
         while True:
-            print("How you wanna continue-\n1. enter 1 for text based input.\n2. enter 2 for voice based inputs.")
-            if(input()=='1'):
+            print("How you wanna continue-\n1. enter 1 for text based input.\n 2. enter 2 for voice based inputs ")
+            finalinput=int(input())
+            if(finalinput==1):
                 query=text_inp().lower()
                 break
-            elif(int(input())==2):
+            elif(finalinput==2):
                 query=take_command().lower()
                 break
             else:
