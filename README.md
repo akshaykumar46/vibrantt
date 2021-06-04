@@ -1,5 +1,5 @@
-EXE Hackathon
-Kshitij Roodkee
+EXE Hackathon \n
+Kshitij Roodkee and
 Akshay Kumar
 Python web assistant bot
 Project idea
