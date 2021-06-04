@@ -11,8 +11,8 @@ import pyautogui
 #import Command_database
 #import table
 engine=pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[12].id)
+# voices = engine.getProperty('voices')
+# engine.setProperty('voice', voices[12].id)
 
 def speak(audio):
     engine.say(audio)
@@ -100,18 +100,17 @@ def text_inp():
 
 
 if __name__ == "__main__":
-
-   # welcome_greet()
+    # welcome_greet()
   #  table_num=table.create_table()
 
 
     while True:
         while True:
-            print("How you wanna continue-\n1. enter 1 for text based input.\2. enter 2 for voice based inputs \n")
-            if(int(input()==1)):
-                query=text_inp
+            print("How you wanna continue-\n1. enter 1 for text based input.\n2. enter 2 for voice based inputs.")
+            if(input()=='1'):
+                query=text_inp().lower()
                 break
-            elif(int(input())):
+            elif(int(input())==2):
                 query=take_command().lower()
                 break
             else:
@@ -163,13 +162,13 @@ if __name__ == "__main__":
            # songs=os.listdir(songs_dir)
             #os.startfile(os.path.join(songs_dir,songs[song_index]))
 
-       # elif "play song" in query:
-        #    speak("playing songs from your computer")
-         #   songs_dir="D:\music"
-          #  song_index=random.choice(range(1,160,1))
-           # print(song_index)
-            #songs=os.listdir(songs_dir)
-            #os.startfile(os.path.join(songs_dir,songs[song_index]))
+        elif "play song" in query:
+            speak("name the song which you wanna listen")
+            song_name=take_command()
+            speak("searching {var} on gaana.com...".format(var=song_name))
+            song_name=song_name.replace(" ","%20")
+            webbrowser.get(chrome_path).open_new_tab("https://gaana.com/song/%s" % song_name)
+
 
         elif "joke" in query:
             jokes()
