@@ -1,3 +1,4 @@
+from urllib.parse import quote_from_bytes
 import pyttsx3
 import datetime
 import speech_recognition
@@ -93,6 +94,11 @@ def take_command():
         return ""
     return query
 
+def text_inp():
+    command=input(">>")
+    return command
+
+
 
 if __name__ == "__main__":
 
@@ -101,7 +107,16 @@ if __name__ == "__main__":
 
 
     while True:
-        query=take_command().lower()
+        while True:
+            print("How you wanna continue-\n1. enter 1 for text based input.\2. enter 2 for voice based inputs \n")
+            if(int(input()==1)):
+                query=text_inp
+                break
+            elif(int(input())):
+                query=take_command().lower()
+                break
+            else:
+                print("Enter a valid choice")
       #  Command_database.add_query(table_num,query)
         if "time now" in query:
             time()
@@ -208,8 +223,6 @@ if __name__ == "__main__":
         elif "yes" in query:
             speak("again, hello sir! ")
 
-        elif "my father"in query:
-            speak("hello kehar singh! Hope you are terrific Sir!")
         elif "shutdown" in query:
             speak("shuting down the system...")
             quit()
