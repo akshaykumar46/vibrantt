@@ -1,8 +1,11 @@
-EXE Hackathon \n
-Kshitij Roodkee and
-Akshay Kumar
+EXE Hackathon 
+
+Kshitij Roodkee and Akshay Kumar
+
 Python web assistant bot
+
 Project idea
+
 To make a chatbot assistant for .EXE website using python and web development.
 
 
