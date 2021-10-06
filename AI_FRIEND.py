@@ -209,10 +209,6 @@ if __name__ == "__main__":
 
         elif "today's date" in query:
             date()
-
-        elif "can you hear me" == query:
-            speak("yes sir! I can hear you")
-
         elif "hello"==query:
             speak("hello sir")
 
@@ -241,16 +237,6 @@ if __name__ == "__main__":
             #!for linux
             chrome_path="google-chrome"
             webbrowser.get(chrome_path).open_new_tab(query+".com")
-
-
-
-        elif "hello to me" in query:
-            speak("hello sir!")
-            speak("can  say it again")
-        elif "hello john" in query:
-            speak("I am not john, I am vibrant sir")
-        elif "yes" in query:
-            speak("again, hello sir! ")
 
         elif "shutdown" in query:
             speak("shuting down the system...")
